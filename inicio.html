@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inducción SSOMA – SINBA</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #4c2e83;
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        header img {
+            height: 60px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.12);
+        }
+
+        .card h2 {
+            color: #4c2e83;
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 420px;
+            border: none;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+        .button {
+            display: inline-block;
+            background: #4c2e83;
+            color: white;
+            padding: 12px 18px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #4c2e83;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Question_book-4.svg/1200px-Question_book-4.svg.png" alt="Logo SINBA">
+        <h1>Inducción SSOMA – SINBA</h1>
+    </header>
+
+    <div class="container">
+
+        <!-- VIDEO -->
+        <div class="card">
+            <h2>📹 Video de Inducción</h2>
+            <iframe id="video-induccion" src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+        </div>
+
+        <!-- FORM REGISTRO -->
+        <div class="card">
+            <h2>📝 Registro de Ingreso</h2>
+            <iframe id="form-registro" src="https://docs.google.com/forms/d/e/1FAIpQLSfFakeExample/viewform?embedded=true"></iframe>
+        </div>
+
+        <!-- EXAMEN -->
+        <div class="card">
+            <h2>🧪 Examen SSOMA</h2>
+            <a id="examen-aprobado" class="button" href="https://forms.gle/fakeExample" target="_blank">Ir al examen</a>
+        </div>
+
+            <!-- REGLAMENTO INTERNO SST -->
+        <div class="card">
+            <h2>📘 Reglamento Interno de SST</h2>
+            <iframe id="reglamento-sst" src="https://docs.google.com/viewer?embedded=true&url=https://tus-reglamentos.com/reglamento.pdf"></iframe>
+        </div>
+
+        <!-- DIFUSIÓN DE POLÍTICAS -->
+        <div class="card">
+            <h2>📢 Difusión de Políticas SSOMA</h2>
+            <iframe id="politicas-sst" src="https://docs.google.com/viewer?embedded=true&url=https://tus-politicas.com/politicas.pdf"></iframe>
+        </div>
+
+    </div>
+
+    <footer>© SINBA • Sistema de Inducción SSOMA • 2025</footer>
+
+    <script>
+        fetch("config.json")
+            .then(r => r.json())
+            .then(cfg => {
+                document.getElementById("video-induccion").src = cfg.video_induccion;
+                document.getElementById("form-registro").src = cfg.form_registro;
+                document.getElementById("examen-aprobado").href = cfg.examen_aprobado;
+                document.getElementById("reglamento-sst").src = cfg.reglamento_sst;
+                document.getElementById("politicas-sst").src = cfg.politicas_sst;
+            })
+            .catch(err => console.error("Error cargando config.json:", err));
+    </script>
+</body>
+</html>
